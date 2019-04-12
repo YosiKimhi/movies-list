@@ -1,0 +1,44 @@
+ul {
+    list-style-type: none;
+  }
+.card-img-top{
+  height:400px
+}
+.card{
+  height:750px;
+  background-color:rgb(225, 248, 253);
+}
+.bottom{
+  bottom: 10px;
+  position: absolute;
+  
+}
+.bottom-width{
+  width:260px;
+}
+@media (max-width: 770px){
+  .card{
+    left: 98px;
+  }
+
+}
+
+@media (max-width: 531px){
+  .card{
+    left: 60px;
+  }
+}
+
+
+@media (max-width: 450px){
+  .card{
+    left: 20px;
+  }
+}
+@media (max-width: 305px){
+  .card{
+    left: 10px;
+  }
+
+
+}

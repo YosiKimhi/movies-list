@@ -1,0 +1,88 @@
+<h4 style="text-align:center;">Add New Movie!</h4>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-sm-offset-1 col-md-offset-2">
+        <form [formGroup]="addMovieForm" (ngSubmit)="onSave()" >
+          <div class="form-group">
+            <label for="title">Title</label>
+              <input
+                type="text"
+                id="title"
+                formControlName="title"
+                class="form-control">
+                <span 
+                  *ngIf="!addMovieForm.get('title').valid && addMovieForm.get('title').touched"
+                  class="help-block">
+                  <span *ngIf="addMovieForm.get('title').errors['titleIsForbidden']">There is already a movie with such a title, choose a different title!</span>
+                  <span *ngIf="addMovieForm.get('title').errors['required']">This field is requierd! please enter title for the movie.
+                    </span>
+                </span>
+          </div>
+          <div class="form-group">
+            <label for="year">Year</label>
+              <input
+                type="text"
+                id="year"
+                formControlName="year"
+                class="form-control">
+                <span 
+                  *ngIf="!addMovieForm.get('year').valid && addMovieForm.get('year').touched"
+                  class="help-block">
+                  This field is requierd! please enter year for the movie.
+                </span>
+          </div>
+          <div class="form-group">
+            <label for="runtime">Runtime</label>
+              <input
+                type="text"
+                id="runtime"
+                formControlName="runtime"
+                class="form-control">
+                <span 
+                *ngIf="!addMovieForm.get('runtime').valid && addMovieForm.get('runtime').touched"
+                class="help-block">
+                This field is requierd! please enter runtime for the movie.
+              </span>
+          </div>
+          <div class="form-group">
+            <label for="genre">Genre</label>
+              <input
+                type="text"
+                id="genre"
+                formControlName="genre"
+                class="form-control">
+                <span 
+                *ngIf="!addMovieForm.get('genre').valid && addMovieForm.get('genre').touched"
+                class="help-block">
+                This field is requierd! please enter genre for the movie.
+              </span>
+          </div>
+          <div class="form-group">
+            <label for="director">Director</label>
+              <input
+                type="text"
+                id="director"
+                formControlName="director"
+                class="form-control">
+                <span 
+                *ngIf="!addMovieForm.get('director').valid && addMovieForm.get('director').touched"
+                class="help-block">
+                This field is requierd! please enter director for the movie.
+              </span>
+          </div>
+          <div class="form-group">
+              <label for="poster">Poster link (optional)</label>
+                <input
+                  type="text"
+                  id="poster"
+                  formControlName="poster"
+                  class="form-control">
+                 
+            </div>
+          <button class="btn btn-primary" type="submit">Save</button>
+          <button class="btn btn-primary" (click)="onCancel()">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>

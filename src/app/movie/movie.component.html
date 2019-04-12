@@ -1,0 +1,15 @@
+<div class="card shadow-lg p-3 mb-5 bg-white rounded"  style="width: 18rem; ">
+  <img class="card-img-top" src="{{movie.poster}}" alt="Card image cap">
+    <ul>
+      <li>Title: {{movie.title | titlecase | nonEnglishRemove}}</li>
+      <li>ID: {{movie.id}} </li>
+      <li>Year: {{movie.year}}</li>
+      <li>Runtime: {{movie.runtime}}</li>
+      <li>Genre: {{movie.genre  }}</li>
+      <li>Director : {{movie.director | shorten :40 }}</li>
+    </ul>
+    <div class="bottom">
+    <button class="btn btn-primary bottom-width" mat-raised-button (click)="onEdit()" >Edit</button>
+    <button class="btn btn-danger bottom-width " mat-raised-button  (click)="onDelete()" >Delete</button>
+    </div>
+</div>
