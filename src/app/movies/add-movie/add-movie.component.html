@@ -29,7 +29,9 @@
                 <span 
                   *ngIf="!addMovieForm.get('year').valid && addMovieForm.get('year').touched"
                   class="help-block">
-                  This field is requierd! please enter year for the movie.
+                  <span *ngIf="addMovieForm.get('year').errors['yearNotValid']">Year is not valid!</span>
+                  <br>
+                  <span *ngIf="addMovieForm.get('year').errors['required']">This field is requierd! please enter year for the movie.</span>
                 </span>
           </div>
           <div class="form-group">

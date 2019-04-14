@@ -31,7 +31,8 @@
               <span 
                 *ngIf="!editMovieForm.get('year').valid && editMovieForm.get('year').touched"
                 class="help-block">
-                This field is requierd! please enter year for the movie.
+                <span *ngIf="editMovieForm.get('year').errors['yearNotValid']">Year is not valid!</span><br>
+                <span *ngIf="editMovieForm.get('year').errors['required']">This field is requierd! please enter year for the movie.</span>
               </span>
         </div>
         <div class="form-group">

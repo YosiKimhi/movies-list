@@ -28,12 +28,13 @@ export class MovieEditComponent implements OnInit {
   
     this.editMovieForm=new FormGroup({
       'title': new FormControl (this.data.movie.title,[Validators.required,this.forbidenTitles.bind(this)]),
-      'year': new FormControl(this.data.movie.year,Validators.required),
+      'year': new FormControl(this.data.movie.year,[Validators.required,this.yearValidation]),
       'runtime':new FormControl (this.data.movie.runtime,Validators.required),
       'genre': new FormControl(this.data.movie.genre,Validators.required),
       'director':new FormControl(this.data.movie.director,Validators.required)
     });
     this.getMoviesTitles();
+    
   }
 
   //Get all movies titles beside the movie we are editing
@@ -57,7 +58,7 @@ export class MovieEditComponent implements OnInit {
     if(this.editMovieForm.valid===true){
       this.movieService.changeMovies(new Movie(this.data.movie.id,
         this.editMovieForm.value.title,
-        this.editMovieForm.value.year,
+        this.editMovieForm.value.year ,
         this.editMovieForm.value.runtime,
         this.editMovieForm.value.genre,
         this.editMovieForm.value.director,
@@ -72,6 +73,19 @@ export class MovieEditComponent implements OnInit {
     }
     return null;
   }
-
+  yearValidation(control :FormControl):{[s:string]:boolean}{
+    var regex=control.value.match(/^[0-9]+$/g);
+    var toInt=+control.value;
+    console.log(toInt);
+    if(regex=== null ){
+      return {'yearNotValid':true};
+    }
+    else if(toInt>3000){
+      return {'yearNotValid':true};
+    }
+    else{
+      return null;
+    }
+  }
 
 }

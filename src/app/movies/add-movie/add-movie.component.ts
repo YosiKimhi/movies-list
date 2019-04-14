@@ -23,7 +23,7 @@ export class AddMovieComponent implements OnInit {
     // console.log(this.data.movie.title)
     this.addMovieForm=new FormGroup({
       'title': new FormControl (null,[Validators.required,this.forbidenTitles.bind(this)]),
-      'year': new FormControl(null,Validators.required),
+      'year': new FormControl(null,[Validators.required,this.yearValidation]),
       'runtime':new FormControl (null,Validators.required),
       'genre': new FormControl(null,Validators.required),
       'director':new FormControl(null,Validators.required),
@@ -68,6 +68,22 @@ export class AddMovieComponent implements OnInit {
     }
     return null;
   }
-
+  yearValidation(control :FormControl):{[s:string]:boolean}{
+    if (control.value===null){
+      return {'yearNotValid':true};
+    }
+    var regex=control.value.match(/^[0-9]+$/g);
+    var toInt=+control.value;
+    console.log(toInt);
+    if(regex=== null ){
+      return {'yearNotValid':true};
+    }
+    else if(toInt>3000){
+      return {'yearNotValid':true};
+    }
+    else{
+      return null;
+    }
+  }
 
 }
