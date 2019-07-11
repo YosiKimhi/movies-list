@@ -1,3 +1,4 @@
+//security vulnerabilities fixed
 import { Component } from '@angular/core';
 
 @Component({
